@@ -7,7 +7,7 @@ import { FuncContext } from "./Provider/MainFunProvider";
 const App = () => {
   const { images } = useContext(FuncContext);
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <div className="bg-white rounded-md border-2 shadow-sm  ">
         <GalleryHeader />
         <div className="grid md:grid-cols-3 lg:grid-cols-5 p-3 gap-3 row-height ">

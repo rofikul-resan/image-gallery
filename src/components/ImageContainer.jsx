@@ -1,15 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FuncContext } from "../Provider/MainFunProvider";
 
 const ImageContainer = ({ image, className }) => {
+  const [checked, setChecked] = useState(false);
   const { selectImage, removeSelectedImg } = useContext(FuncContext);
   const handleSelect = (isSelected, image) => {
+    setChecked(isSelected);
     if (isSelected) {
       selectImage(image);
     } else {
       removeSelectedImg(image);
     }
   };
+
+  useEffect(() => {
+    setChecked(false);
+  }, [image]);
   return (
     <div
       className={`relative rounded-md border border-[#dbdcdf] ${className} main-container overflow-hidden `}
@@ -18,16 +24,13 @@ const ImageContainer = ({ image, className }) => {
         type="checkbox"
         className="rounded-sm absolute z-20 top-3 left-3 "
         onChange={(e) => handleSelect(e.target.checked, image)}
+        checked={checked}
       />
       <div
-        style={{
-          background: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
         className={`inset-0 overflow-hidden w-full justify-center h-full hover-wrapper`}
-      ></div>
+      >
+        <img src={image} alt="image" className="w-fit mx-auto" />
+      </div>
     </div>
   );
 };

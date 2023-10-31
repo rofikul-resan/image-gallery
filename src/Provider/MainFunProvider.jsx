@@ -29,10 +29,23 @@ const MainFunProvider = ({ children }) => {
   funcValue.selectImage = (img) => {
     setSelected([...selected, img]);
   };
+
   funcValue.removeSelectedImg = (img) => {
     const remain = selected.filter((image) => image !== img);
     setSelected(remain);
   };
+
+  funcValue.deleteImage = () => {
+    const remainImage = [];
+    images.forEach((img) => {
+      if (!selected.includes(img)) {
+        remainImage.push(img);
+      }
+    });
+    setSelected([]);
+    setImages(remainImage);
+  };
+
   return (
     <FuncContext.Provider value={funcValue}>{children}</FuncContext.Provider>
   );
