@@ -20,6 +20,8 @@ body {
   display: none;
 }
 
+
+
 .main-container:hover .hover-wrapper::after {
   display: block;
 }
