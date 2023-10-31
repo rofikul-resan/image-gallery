@@ -3,6 +3,7 @@ import AddImageContainer from "./components/AddImageContainer";
 import GalleryHeader from "./components/GalleryHeader";
 import ImageContainer from "./components/ImageContainer";
 import { FuncContext } from "./Provider/MainFunProvider";
+import MotionContainer from "./components/MotionContainer";
 
 const App = () => {
   const { images } = useContext(FuncContext);
@@ -13,13 +14,18 @@ const App = () => {
         <div className="grid md:grid-cols-3 lg:grid-cols-5 p-3 gap-3 row-height ">
           {images.map((img, index) =>
             index === 0 ? (
-              <ImageContainer
-                className={"col-span-2 row-span-2"}
-                key={index}
+              <MotionContainer
                 image={img}
-              />
+                key={index}
+                index={index}
+                className={"col-span-2 row-span-2"}
+              >
+                <ImageContainer key={index} image={img} />
+              </MotionContainer>
             ) : (
-              <ImageContainer key={index} image={img} />
+              <MotionContainer key={index} index={index}>
+                <ImageContainer image={img} />
+              </MotionContainer>
             )
           )}
 

@@ -24,6 +24,7 @@ const MainFunProvider = ({ children }) => {
   // value
   funcValue.images = images;
   funcValue.selected = selected;
+  funcValue.setImages = setImages;
 
   // handler
   funcValue.selectImage = (img) => {
