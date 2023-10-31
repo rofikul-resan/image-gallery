@@ -1,3 +1,4 @@
+import AddImageContainer from "./components/AddImageContainer";
 import GalleryHeader from "./components/GalleryHeader";
 import ImageContener from "./components/ImageContener";
 
@@ -18,8 +19,8 @@ const App = () => {
           <ImageContener className={"main-container"} />
           <ImageContener className={"main-container"} />
           <ImageContener className={"main-container"} />
-          <ImageContener className={"main-container"} />
-          <ImageContener className={"main-container"} />
+
+          <AddImageContainer />
         </div>
       </div>
     </div>
