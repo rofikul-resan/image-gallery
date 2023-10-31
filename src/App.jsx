@@ -6,18 +6,20 @@ const App = () => {
     <div>
       <div className="bg-white rounded-md border-2 shadow-sm  ">
         <GalleryHeader />
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 p-3 gap-3 ">
-          <ImageContener className={"col-span-2 row-span-2"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
-          <ImageContener className={"col-span-1"} />
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 p-3 gap-3 row-height ">
+          <ImageContener className={"col-span-2 row-span-2 main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
+          <ImageContener className={"main-container"} />
         </div>
       </div>
     </div>

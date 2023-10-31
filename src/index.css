@@ -6,3 +6,20 @@ body {
   background-color: #edf2f7;
   padding: 10px;
 }
+
+.row-height {
+  grid-auto-rows: 220px;
+}
+
+.hover-wrapper::after {
+  content: "";
+  background: #000;
+  opacity: 50%;
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.main-container:hover .hover-wrapper::after {
+  display: block;
+}
