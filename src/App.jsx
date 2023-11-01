@@ -9,6 +9,7 @@ import EmptyBox from "./components/EmptyBox";
 const App = () => {
   const { images, setImages } = useContext(FuncContext);
   const [draggedImage, setDraggedImage] = useState(null);
+  const [draggedOverImage, setDraggedOverImage] = useState(null);
   const [draggedImageIndex, setDraggedImageIndex] = useState(null);
   const [positionIndex, setPositionIndex] = useState(null);
 
@@ -16,27 +17,21 @@ const App = () => {
     e.dataTransfer.effectAllowed = "move";
     setDraggedImage(image);
     setDraggedImageIndex(index);
-    // const imageArray = [...image];
-    // imageArray[index] = null;
-    // setImages(imageArray);
 
     console.log("start", draggedImage, index);
   };
 
   const dragOver = (e, image, index) => {
     e.preventDefault();
-    console.log(image, index, draggedImage);
     setPositionIndex(index);
-    // const newArray = [...image];
-    // newArray.splice(index, 0, null);
-    // setImages(newArray);
+    setDraggedOverImage(image);
   };
 
   const dragEnd = (e) => {
     console.log("end", e.dataTransfer.getData("imageId"));
     const newImageArr = [...images];
-    newImageArr.splice(draggedImageIndex, 1);
-    newImageArr.splice(positionIndex, 0, draggedImage);
+    newImageArr.splice(draggedImageIndex, 1, draggedOverImage);
+    newImageArr.splice(positionIndex, 1, draggedImage);
     setImages(newImageArr);
     setDraggedImage(null);
     setPositionIndex(null);
@@ -50,35 +45,27 @@ const App = () => {
           {images.map((img, index) =>
             index === 0 ? (
               <div key={index} className={"col-span-2 row-span-2"}>
-                {img === null ? (
-                  <EmptyBox />
-                ) : (
-                  <MotionContainer
-                    image={img}
-                    index={index}
-                    dragEnd={dragEnd}
-                    dragOver={dragOver}
-                    dragStart={dragStart}
-                  >
-                    <ImageContainer key={index} image={img} />
-                  </MotionContainer>
-                )}
+                <MotionContainer
+                  image={img}
+                  index={index}
+                  dragEnd={dragEnd}
+                  dragOver={dragOver}
+                  dragStart={dragStart}
+                >
+                  <ImageContainer key={index} image={img} />
+                </MotionContainer>
               </div>
             ) : (
               <div key={index}>
-                {img === null ? (
-                  <EmptyBox />
-                ) : (
-                  <MotionContainer
-                    image={img}
-                    index={index}
-                    dragEnd={dragEnd}
-                    dragOver={dragOver}
-                    dragStart={dragStart}
-                  >
-                    <ImageContainer key={index} image={img} />
-                  </MotionContainer>
-                )}
+                <MotionContainer
+                  image={img}
+                  index={index}
+                  dragEnd={dragEnd}
+                  dragOver={dragOver}
+                  dragStart={dragStart}
+                >
+                  <ImageContainer key={index} image={img} />
+                </MotionContainer>
               </div>
             )
           )}
