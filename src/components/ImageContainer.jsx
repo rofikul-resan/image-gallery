@@ -18,7 +18,9 @@ const ImageContainer = ({ image, className }) => {
   }, [image]);
   return (
     <div
-      className={`relative rounded-md border border-[#dbdcdf] ${className} main-container overflow-hidden `}
+      className={`relative rounded-md border border-[#dbdcdf] ${
+        checked && "opacity-50"
+      } main-container overflow-hidden `}
     >
       <input
         type="checkbox"
