@@ -11,11 +11,11 @@ const GalleryHeader = () => {
     <div className=" px-5 mx-auto border-b border-[#dbdcdf] py-1 my-1 h-12 shadow-md">
       {selected.length < 1 ? (
         <div>
-          <h1 className="font-semibold text-2xl">Gallery</h1>
+          <h1 className="font-semibold text-xl">Gallery</h1>
         </div>
       ) : (
         <div className="flex justify-between items-center my-auto ">
-          <div className="flex items-center gap-3 text-2xl font-semibold">
+          <div className="flex items-center gap-3 text-xl font-semibold">
             <input
               type="checkbox"
               className="rounded-sm"

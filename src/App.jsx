@@ -7,7 +7,7 @@ import { FuncContext } from "./Provider/MainFunProvider";
 const App = () => {
   const { images, setImages } = useContext(FuncContext);
   const [draggedImage, setDraggedImage] = useState(null);
-  const [draggedOverImage, setDraggedOverImage] = useState(null);
+
   const [draggedImageIndex, setDraggedImageIndex] = useState(null);
   const [positionIndex, setPositionIndex] = useState(null);
 
@@ -15,21 +15,21 @@ const App = () => {
     e.dataTransfer.effectAllowed = "move";
     setDraggedImage(image);
     setDraggedImageIndex(index);
-
     console.log("start", draggedImage, index);
   };
 
+  // handle hovered box
   const dragOver = (e, image, index) => {
     e.preventDefault();
     setPositionIndex(index);
-    setDraggedOverImage(image);
   };
 
+  // handle drop
   const dragEnd = (e) => {
     console.log("end", e.dataTransfer.getData("imageId"));
     const newImageArr = [...images];
-    newImageArr.splice(draggedImageIndex, 1, draggedOverImage);
-    newImageArr.splice(positionIndex, 1, draggedImage);
+    newImageArr.splice(draggedImageIndex, 1);
+    newImageArr.splice(positionIndex, 0, draggedImage);
     setImages(newImageArr);
     setDraggedImage(null);
     setPositionIndex(null);
